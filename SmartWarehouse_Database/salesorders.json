@@ -1,0 +1,233 @@
+[
+  {
+    "_id": "6a04a0b20160efdf313fa65a",
+    "orderNumber": "SO-20250510-0001",
+    "customerId": "6a04a0b20160efdf313fa650",
+    "status": "delivered",
+    "totalAmount": 91960000,
+    "expectedDeliveryDate": "2025-05-13T00:00:00.000Z",
+    "shippingAddress": {
+      "street": "123 Đường ABC",
+      "city": "Hà Nội",
+      "state": "Hà Nội",
+      "zipCode": "100000",
+      "country": "Vietnam"
+    },
+    "notes": "Giao hàng cho TGDD HN",
+    "createdBy": "6a04a0b20160efdf313fa646",
+    "items": [
+      {
+        "productId": "6a04513d84e7fb8a77929597",
+        "quantity": 2,
+        "unitPrice": 22990000,
+        "totalPrice": 45980000
+      },
+      {
+        "productId": "6a04513d84e7fb8a779295a0",
+        "quantity": 4,
+        "unitPrice": 5490000,
+        "totalPrice": 21960000
+      },
+      {
+        "productId": "6a04513d84e7fb8a779295a8",
+        "quantity": 3,
+        "unitPrice": 790000,
+        "totalPrice": 2370000
+      }
+    ],
+    "createdAt": "2026-05-13T16:02:58.637Z",
+    "updatedAt": "2026-05-13T16:02:58.637Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa65b",
+    "orderNumber": "SO-20250511-0002",
+    "customerId": "6a04a0b20160efdf313fa651",
+    "status": "shipped",
+    "totalAmount": 67970000,
+    "expectedDeliveryDate": "2025-05-14T00:00:00.000Z",
+    "shippingAddress": {
+      "street": "123 Đường ABC",
+      "city": "TP.HCM",
+      "state": "TP.HCM",
+      "zipCode": "100000",
+      "country": "Vietnam"
+    },
+    "notes": "FPT Shop đặt iPhone 15",
+    "createdBy": "6a04a0b20160efdf313fa646",
+    "items": [
+      {
+        "productId": "6a04513d84e7fb8a7792959a",
+        "quantity": 2,
+        "unitPrice": 22990000,
+        "totalPrice": 45980000
+      },
+      {
+        "productId": "6a04513d84e7fb8a779295a1",
+        "quantity": 2,
+        "unitPrice": 11990000,
+        "totalPrice": 23980000
+      }
+    ],
+    "createdAt": "2026-05-13T16:02:58.637Z",
+    "updatedAt": "2026-05-13T16:02:58.637Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa65c",
+    "orderNumber": "SO-20250512-0003",
+    "customerId": "6a04a0b20160efdf313fa652",
+    "status": "processing",
+    "totalAmount": 113940000,
+    "expectedDeliveryDate": "2025-05-16T00:00:00.000Z",
+    "shippingAddress": {
+      "street": "123 Đường ABC",
+      "city": "TP.HCM",
+      "state": "TP.HCM",
+      "zipCode": "100000",
+      "country": "Vietnam"
+    },
+    "notes": "Điện Máy Xanh - Tivi + Máy lọc",
+    "createdBy": "6a04a0b20160efdf313fa646",
+    "items": [
+      {
+        "productId": "6a04513d84e7fb8a779295a4",
+        "quantity": 3,
+        "unitPrice": 18990000,
+        "totalPrice": 56970000
+      },
+      {
+        "productId": "6a04513d84e7fb8a779295aa",
+        "quantity": 3,
+        "unitPrice": 12990000,
+        "totalPrice": 38970000
+      },
+      {
+        "productId": "6a04513d84e7fb8a779295a7",
+        "quantity": 18,
+        "unitPrice": 990000,
+        "totalPrice": 17820000
+      }
+    ],
+    "createdAt": "2026-05-13T16:02:58.637Z",
+    "updatedAt": "2026-05-13T16:02:58.637Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa65d",
+    "orderNumber": "SO-20250513-0004",
+    "customerId": "6a04a0b20160efdf313fa653",
+    "status": "confirmed",
+    "totalAmount": 74970000,
+    "expectedDeliveryDate": "2025-05-17T00:00:00.000Z",
+    "shippingAddress": {
+      "street": "123 Đường ABC",
+      "city": "Đà Nẵng",
+      "state": "Đà Nẵng",
+      "zipCode": "100000",
+      "country": "Vietnam"
+    },
+    "notes": "Nguyễn Kim - Tablet + Headphone",
+    "createdBy": "6a04a0b20160efdf313fa646",
+    "items": [
+      {
+        "productId": "6a04513d84e7fb8a7792959d",
+        "quantity": 2,
+        "unitPrice": 28990000,
+        "totalPrice": 57980000
+      },
+      {
+        "productId": "6a04513d84e7fb8a7792959f",
+        "quantity": 1,
+        "unitPrice": 8990000,
+        "totalPrice": 8990000
+      },
+      {
+        "productId": "6a04513d84e7fb8a779295a8",
+        "quantity": 10,
+        "unitPrice": 790000,
+        "totalPrice": 7900000
+      }
+    ],
+    "createdAt": "2026-05-13T16:02:58.637Z",
+    "updatedAt": "2026-05-13T16:02:58.637Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa65e",
+    "orderNumber": "SO-20250513-0005",
+    "customerId": "6a04a0b20160efdf313fa650",
+    "status": "pending",
+    "totalAmount": 249950000,
+    "expectedDeliveryDate": "2025-05-20T00:00:00.000Z",
+    "shippingAddress": {
+      "street": "123 Đường ABC",
+      "city": "Hà Nội",
+      "state": "Hà Nội",
+      "zipCode": "100000",
+      "country": "Vietnam"
+    },
+    "notes": "TGDD đặt Galaxy Z Fold6",
+    "createdBy": "6a04a0b20160efdf313fa646",
+    "items": [
+      {
+        "productId": "6a04513d84e7fb8a779295a6",
+        "quantity": 5,
+        "unitPrice": 49990000,
+        "totalPrice": 249950000
+      }
+    ],
+    "createdAt": "2026-05-13T16:02:58.637Z",
+    "updatedAt": "2026-05-13T16:02:58.637Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa65f",
+    "orderNumber": "SO-20250513-0006",
+    "customerId": "6a04a0b20160efdf313fa651",
+    "status": "processing",
+    "totalAmount": 44990000,
+    "expectedDeliveryDate": "2025-05-21T00:00:00.000Z",
+    "shippingAddress": {
+      "street": "123 Đường ABC",
+      "city": "TP.HCM",
+      "state": "TP.HCM",
+      "zipCode": "100000",
+      "country": "Vietnam"
+    },
+    "notes": "FPT Shop - MacBook Pro M3",
+    "createdBy": "6a04a0b20160efdf313fa646",
+    "items": [
+      {
+        "productId": "6a04513d84e7fb8a7792959b",
+        "quantity": 1,
+        "unitPrice": 44990000,
+        "totalPrice": 44990000
+      }
+    ],
+    "createdAt": "2026-05-13T16:02:58.637Z",
+    "updatedAt": "2026-05-15T06:33:20.810Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa660",
+    "orderNumber": "SO-20250513-0007",
+    "customerId": "6a04a0b20160efdf313fa652",
+    "status": "cancelled",
+    "totalAmount": 39980000,
+    "expectedDeliveryDate": "2025-05-15T00:00:00.000Z",
+    "shippingAddress": {
+      "street": "123 Đường ABC",
+      "city": "TP.HCM",
+      "state": "TP.HCM",
+      "zipCode": "100000",
+      "country": "Vietnam"
+    },
+    "notes": "Đã hủy - hết hàng LG OLED",
+    "createdBy": "6a04a0b20160efdf313fa646",
+    "items": [
+      {
+        "productId": "6a04513d84e7fb8a779295a5",
+        "quantity": 1,
+        "unitPrice": 39990000,
+        "totalPrice": 39990000
+      }
+    ],
+    "createdAt": "2026-05-13T16:02:58.637Z",
+    "updatedAt": "2026-05-13T16:02:58.637Z"
+  }
+]

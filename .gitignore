@@ -1,0 +1,18 @@
+# RSA Keys — NEVER commit private keys
+services/auth-service/keys/private.pem
+services/*/keys/private.pem
+
+# Node
+node_modules/
+dist/
+
+# Environment
+.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db

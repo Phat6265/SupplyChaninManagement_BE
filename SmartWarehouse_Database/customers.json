@@ -1,0 +1,91 @@
+[
+  {
+    "_id": "6a04a0b20160efdf313fa650",
+    "name": "Thế Giới Di Động",
+    "email": "order@tgdd.vn",
+    "phone": "0291111111",
+    "companyName": "TGDD Corp",
+    "taxId": "KH-001",
+    "address": {
+      "street": "128 Trần Phú",
+      "city": "Hà Nội",
+      "state": "HN",
+      "zipCode": "100000",
+      "country": "Vietnam"
+    },
+    "isActive": true,
+    "createdAt": "2026-05-13T16:02:58.633Z",
+    "updatedAt": "2026-05-13T16:02:58.633Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa651",
+    "name": "FPT Shop",
+    "email": "order@fptshop.vn",
+    "phone": "0292222222",
+    "companyName": "FPT Retail",
+    "taxId": "KH-002",
+    "address": {
+      "street": "261 Hoàng Diệu",
+      "city": "TP.HCM",
+      "state": "HCM",
+      "zipCode": "700000",
+      "country": "Vietnam"
+    },
+    "isActive": true,
+    "createdAt": "2026-05-13T16:02:58.633Z",
+    "updatedAt": "2026-05-13T16:02:58.633Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa652",
+    "name": "Điện Máy Xanh",
+    "email": "order@dienmayxanh.vn",
+    "phone": "0293333333",
+    "companyName": "DMX Corp",
+    "taxId": "KH-003",
+    "address": {
+      "street": "456 Lê Văn Việt",
+      "city": "TP.HCM",
+      "state": "HCM",
+      "zipCode": "700000",
+      "country": "Vietnam"
+    },
+    "isActive": true,
+    "createdAt": "2026-05-13T16:02:58.633Z",
+    "updatedAt": "2026-05-13T16:02:58.633Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa653",
+    "name": "Nguyễn Kim",
+    "email": "order@nguyenkim.vn",
+    "phone": "0294444444",
+    "companyName": "NK Electronics",
+    "taxId": "KH-004",
+    "address": {
+      "street": "99 Trần Hưng Đạo",
+      "city": "Đà Nẵng",
+      "state": "ĐN",
+      "zipCode": "550000",
+      "country": "Vietnam"
+    },
+    "isActive": true,
+    "createdAt": "2026-05-13T16:02:58.633Z",
+    "updatedAt": "2026-05-13T16:02:58.633Z"
+  },
+  {
+    "_id": "6a06bb79ef9a202b750ae4d8",
+    "name": "Phong Vũ",
+    "email": "phongvu@gmail.com",
+    "phone": "0901402434",
+    "address": {
+      "street": "Can Tho, Vietnam",
+      "city": "N/A",
+      "state": "N/A",
+      "zipCode": "00000",
+      "country": "N/A"
+    },
+    "isActive": true,
+    "createdAt": "2026-05-15T06:21:45.647Z",
+    "updatedAt": "2026-05-15T06:26:27.380Z",
+    "__v": 0
+  }
+]

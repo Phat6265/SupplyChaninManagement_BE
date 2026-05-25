@@ -1,0 +1,113 @@
+[
+  {
+    "_id": "6a04513c84e7fb8a77929587",
+    "firstName": "Admin",
+    "lastName": "System",
+    "email": "admin@warehouse.com",
+    "password": "$2a$10$ABunYiy1oYL7tD8kt0QID.mQgibuxgoxwElHuKuI8aO3AT2G3sXVO",
+    "phone": "0901234567",
+    "role": "admin",
+    "isActive": true,
+    "createdAt": "2026-05-13T10:23:56.999Z",
+    "updatedAt": "2026-05-13T10:23:56.999Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a04513d84e7fb8a77929589",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "staff@warehouse.com",
+    "password": "$2a$10$LmRBKbL6tOj0JQ71WiN3gOZLDscGGaeSru3t/3h5S2SEsCShrz2Mq",
+    "phone": "0907654321",
+    "role": "staff",
+    "isActive": true,
+    "createdAt": "2026-05-13T10:23:57.004Z",
+    "updatedAt": "2026-05-13T10:23:57.004Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa646",
+    "firstName": "Admin",
+    "lastName": "System",
+    "email": "admin@scm.com",
+    "password": "$2a$10$YXXy4qq7K3EflNHg0v6nXenNFWdC1CEe2ctaurM2BvN5rn9duvsBO",
+    "role": "admin",
+    "phone": "0901111111",
+    "isActive": true,
+    "createdAt": "2026-05-13T16:02:58.620Z",
+    "updatedAt": "2026-05-13T16:02:58.620Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa647",
+    "firstName": "Manager",
+    "lastName": "Kho",
+    "email": "manager@scm.com",
+    "password": "$2a$10$YXXy4qq7K3EflNHg0v6nXenNFWdC1CEe2ctaurM2BvN5rn9duvsBO",
+    "role": "warehouse_manager",
+    "phone": "0902222222",
+    "isActive": true,
+    "createdAt": "2026-05-13T16:02:58.620Z",
+    "updatedAt": "2026-05-13T16:02:58.620Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa648",
+    "firstName": "Nguyen",
+    "lastName": "Staff",
+    "email": "staff@scm.com",
+    "password": "$2a$10$YXXy4qq7K3EflNHg0v6nXenNFWdC1CEe2ctaurM2BvN5rn9duvsBO",
+    "role": "staff",
+    "phone": "0903333333",
+    "isActive": true,
+    "createdAt": "2026-05-13T16:02:58.620Z",
+    "updatedAt": "2026-05-13T16:02:58.620Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa649",
+    "firstName": "Tran",
+    "lastName": "Staff2",
+    "email": "staff2@scm.com",
+    "password": "$2a$10$YXXy4qq7K3EflNHg0v6nXenNFWdC1CEe2ctaurM2BvN5rn9duvsBO",
+    "role": "staff",
+    "phone": "0903333344",
+    "isActive": true,
+    "createdAt": "2026-05-13T16:02:58.620Z",
+    "updatedAt": "2026-05-13T16:02:58.620Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa64a",
+    "firstName": "Le",
+    "lastName": "Driver",
+    "email": "driver@scm.com",
+    "password": "$2a$10$YXXy4qq7K3EflNHg0v6nXenNFWdC1CEe2ctaurM2BvN5rn9duvsBO",
+    "role": "driver",
+    "phone": "0904444444",
+    "isActive": true,
+    "createdAt": "2026-05-13T16:02:58.620Z",
+    "updatedAt": "2026-05-13T16:02:58.620Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa64b",
+    "firstName": "Pham",
+    "lastName": "Driver2",
+    "email": "driver2@scm.com",
+    "password": "$2a$10$YXXy4qq7K3EflNHg0v6nXenNFWdC1CEe2ctaurM2BvN5rn9duvsBO",
+    "role": "driver",
+    "phone": "0904444455",
+    "isActive": true,
+    "createdAt": "2026-05-13T16:02:58.620Z",
+    "updatedAt": "2026-05-13T16:02:58.620Z"
+  },
+  {
+    "_id": "6a06bcddef9a202b750ae4fe",
+    "firstName": "Nguyễn",
+    "lastName": "Phát",
+    "email": "tenphat218@gmail.com",
+    "password": "$2a$10$aKrvWR0QzahQszSqb5pTVeBT67OIS73omHnrgVEdm7yxOrn7sxK1O",
+    "phone": "0939446625",
+    "role": "driver",
+    "isActive": true,
+    "createdAt": "2026-05-15T06:27:41.343Z",
+    "updatedAt": "2026-05-15T06:27:41.343Z",
+    "__v": 0
+  }
+]

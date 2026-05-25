@@ -1,0 +1,17 @@
+[
+  {
+    "_id": "665a1b2c3d4e5f6a7b8c9d40",
+    "productId": "665a1b2c3d4e5f6a7b8c9d20",
+    "warehouseId": "665a1b2c3d4e5f6a7b8c9d10",
+    "actionType": "import",
+    "quantity": 200,
+    "previousQuantity": 0,
+    "newQuantity": 200,
+    "batchNumber": "BATCH-2025-001",
+    "expirationDate": null,
+    "createdBy": "665a1b2c3d4e5f6a7b8c9d02",
+    "notes": "Nhap kho lan dau - Laptop Dell",
+    "createdAt": "2025-02-05T09:00:00.000Z",
+    "updatedAt": "2025-02-05T09:00:00.000Z"
+  }
+]

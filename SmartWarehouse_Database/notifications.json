@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "6a06bdb8ef9a202b750ae557",
+    "title": "📦 Purchase Order PO-20260515-0001",
+    "message": "Đơn mua hàng PO-20260515-0001 đã được PHÊ DUYỆT.",
+    "type": "order_status",
+    "targetUserId": null,
+    "relatedEntity": {
+      "kind": "PurchaseOrder",
+      "id": "6a06bd1def9a202b750ae509",
+      "code": "PO-20260515-0001"
+    },
+    "isRead": true,
+    "createdAt": "2026-05-15T06:31:20.890Z",
+    "updatedAt": "2026-05-15T06:31:27.144Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a06be20ef9a202b750ae592",
+    "title": "🛒 Sales Order SO-20250513-0006",
+    "message": "Đơn bán hàng SO-20250513-0006 đã được XÁC NHẬN.",
+    "type": "order_status",
+    "targetUserId": null,
+    "relatedEntity": {
+      "kind": "SalesOrder",
+      "id": "6a04a0b20160efdf313fa65f",
+      "code": "SO-20250513-0006"
+    },
+    "isRead": true,
+    "createdAt": "2026-05-15T06:33:04.335Z",
+    "updatedAt": "2026-05-15T06:33:38.390Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a06be30ef9a202b750ae5d9",
+    "title": "🛒 Sales Order SO-20250513-0006",
+    "message": "Đơn bán hàng SO-20250513-0006 đang được XỬ LÝ.",
+    "type": "order_status",
+    "targetUserId": null,
+    "relatedEntity": {
+      "kind": "SalesOrder",
+      "id": "6a04a0b20160efdf313fa65f",
+      "code": "SO-20250513-0006"
+    },
+    "isRead": true,
+    "createdAt": "2026-05-15T06:33:20.812Z",
+    "updatedAt": "2026-05-15T06:33:36.426Z",
+    "__v": 0
+  }
+]

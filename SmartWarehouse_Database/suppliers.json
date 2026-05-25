@@ -1,0 +1,92 @@
+[
+  {
+    "_id": "6a04a0b20160efdf313fa64c",
+    "name": "Samsung Vietnam",
+    "email": "supply@samsung.vn",
+    "phone": "0281111111",
+    "rating": 5,
+    "taxId": "MST-001",
+    "address": {
+      "street": "1 Samsung Blvd",
+      "city": "Hà Nội",
+      "state": "HN",
+      "zipCode": "100000",
+      "country": "Vietnam"
+    },
+    "isActive": true,
+    "createdAt": "2026-05-13T16:02:58.629Z",
+    "updatedAt": "2026-05-13T16:02:58.629Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa64d",
+    "name": "Apple Vietnam",
+    "email": "supply@apple.vn",
+    "phone": "0282222222",
+    "rating": 5,
+    "taxId": "MST-002",
+    "address": {
+      "street": "2 Apple Ave",
+      "city": "TP.HCM",
+      "state": "HCM",
+      "zipCode": "700000",
+      "country": "Vietnam"
+    },
+    "isActive": true,
+    "createdAt": "2026-05-13T16:02:58.629Z",
+    "updatedAt": "2026-05-13T16:02:58.629Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa64e",
+    "name": "Sony Vietnam",
+    "email": "supply@sony.vn",
+    "phone": "0283333333",
+    "rating": 4,
+    "taxId": "MST-003",
+    "address": {
+      "street": "3 Sony Rd",
+      "city": "Đà Nẵng",
+      "state": "ĐN",
+      "zipCode": "550000",
+      "country": "Vietnam"
+    },
+    "isActive": true,
+    "createdAt": "2026-05-13T16:02:58.629Z",
+    "updatedAt": "2026-05-13T16:02:58.629Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa64f",
+    "name": "LG Electronics VN",
+    "email": "supply@lg.vn",
+    "phone": "0284444444",
+    "rating": 4,
+    "taxId": "MST-004",
+    "address": {
+      "street": "4 LG St",
+      "city": "Hải Phòng",
+      "state": "HP",
+      "zipCode": "180000",
+      "country": "Vietnam"
+    },
+    "isActive": true,
+    "createdAt": "2026-05-13T16:02:58.629Z",
+    "updatedAt": "2026-05-13T16:02:58.629Z"
+  },
+  {
+    "_id": "6a06bc4bef9a202b750ae4e8",
+    "name": "LG Vietnam",
+    "email": "order@lg.vn",
+    "phone": "090999567",
+    "rating": 5,
+    "address": {
+      "street": "Ha Noi,  Vietnam",
+      "city": "N/A",
+      "state": "N/A",
+      "zipCode": "00000",
+      "country": "N/A"
+    },
+    "isActive": true,
+    "createdAt": "2026-05-15T06:25:15.954Z",
+    "updatedAt": "2026-05-15T06:26:13.748Z",
+    "__v": 0
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "_id": "665a1b2c3d4e5f6a7b8c9d50",
+    "userId": "665a1b2c3d4e5f6a7b8c9d01",
+    "action": "CREATE",
+    "module": "warehouses",
+    "description": "Tao kho moi: Kho Trung Tam HCM",
+    "changes": {
+      "name": "Kho Trung Tam HCM",
+      "capacity": 5000
+    },
+    "ipAddress": "192.168.1.100",
+    "userAgent": "SmartWarehouse/1.0 Android",
+    "createdAt": "2025-01-10T08:00:00.000Z",
+    "updatedAt": "2025-01-10T08:00:00.000Z"
+  }
+]

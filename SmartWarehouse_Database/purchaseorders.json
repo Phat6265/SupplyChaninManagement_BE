@@ -1,0 +1,168 @@
+[
+  {
+    "_id": "6a04a0b20160efdf313fa654",
+    "poNumber": "PO-20250510-0001",
+    "supplierId": "6a04a0b20160efdf313fa64c",
+    "warehouseId": "6a04513d84e7fb8a7792958b",
+    "status": "received",
+    "totalAmount": 114950000,
+    "expectedDeliveryDate": "2025-05-15T00:00:00.000Z",
+    "notes": "Đơn nhập Samsung tháng 5",
+    "createdBy": "6a04a0b20160efdf313fa646",
+    "items": [
+      {
+        "productId": "6a04513d84e7fb8a77929597",
+        "quantity": 5,
+        "unitPrice": 22990000,
+        "totalPrice": 114950000
+      }
+    ],
+    "createdAt": "2026-05-13T16:02:58.637Z",
+    "updatedAt": "2026-05-13T16:02:58.637Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa655",
+    "poNumber": "PO-20250511-0002",
+    "supplierId": "6a04a0b20160efdf313fa64d",
+    "warehouseId": "6a04513d84e7fb8a7792958d",
+    "status": "approved",
+    "totalAmount": 101970000,
+    "expectedDeliveryDate": "2025-05-18T00:00:00.000Z",
+    "notes": "Nhập iPhone 15 Pro",
+    "createdBy": "6a04a0b20160efdf313fa646",
+    "items": [
+      {
+        "productId": "6a04513d84e7fb8a77929599",
+        "quantity": 3,
+        "unitPrice": 33990000,
+        "totalPrice": 101970000
+      }
+    ],
+    "createdAt": "2026-05-13T16:02:58.637Z",
+    "updatedAt": "2026-05-13T16:02:58.637Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa656",
+    "poNumber": "PO-20250512-0003",
+    "supplierId": "6a04a0b20160efdf313fa64c",
+    "warehouseId": "6a04513d84e7fb8a7792958b",
+    "status": "pending",
+    "totalAmount": 98960000,
+    "expectedDeliveryDate": "2025-05-20T00:00:00.000Z",
+    "notes": "Nhập Galaxy Book4 + Buds3",
+    "createdBy": "6a04a0b20160efdf313fa646",
+    "items": [
+      {
+        "productId": "6a04513d84e7fb8a7792959c",
+        "quantity": 3,
+        "unitPrice": 25990000,
+        "totalPrice": 77970000
+      },
+      {
+        "productId": "6a04513d84e7fb8a779295a0",
+        "quantity": 4,
+        "unitPrice": 5490000,
+        "totalPrice": 21960000
+      }
+    ],
+    "createdAt": "2026-05-13T16:02:58.637Z",
+    "updatedAt": "2026-05-13T16:02:58.637Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa657",
+    "poNumber": "PO-20250513-0004",
+    "supplierId": "6a04a0b20160efdf313fa64e",
+    "warehouseId": "6a04513d84e7fb8a7792958d",
+    "status": "received",
+    "totalAmount": 53940000,
+    "expectedDeliveryDate": "2025-05-14T00:00:00.000Z",
+    "notes": "Nhập Sony WH + PS5",
+    "createdBy": "6a04a0b20160efdf313fa646",
+    "items": [
+      {
+        "productId": "6a04513d84e7fb8a7792959f",
+        "quantity": 2,
+        "unitPrice": 8990000,
+        "totalPrice": 17980000
+      },
+      {
+        "productId": "6a04513d84e7fb8a779295a3",
+        "quantity": 2,
+        "unitPrice": 13990000,
+        "totalPrice": 27980000
+      },
+      {
+        "productId": "6a04513d84e7fb8a779295a7",
+        "quantity": 8,
+        "unitPrice": 990000,
+        "totalPrice": 7920000
+      }
+    ],
+    "createdAt": "2026-05-13T16:02:58.637Z",
+    "updatedAt": "2026-05-13T16:02:58.637Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa658",
+    "poNumber": "PO-20250513-0005",
+    "supplierId": "6a04a0b20160efdf313fa64d",
+    "warehouseId": "6a04513d84e7fb8a7792958b",
+    "status": "draft",
+    "totalAmount": 89980000,
+    "expectedDeliveryDate": "2025-05-25T00:00:00.000Z",
+    "notes": "Draft: MacBook Pro M3",
+    "createdBy": "6a04a0b20160efdf313fa646",
+    "items": [
+      {
+        "productId": "6a04513d84e7fb8a7792959b",
+        "quantity": 2,
+        "unitPrice": 44990000,
+        "totalPrice": 89980000
+      }
+    ],
+    "createdAt": "2026-05-13T16:02:58.637Z",
+    "updatedAt": "2026-05-13T16:02:58.637Z"
+  },
+  {
+    "_id": "6a04a0b20160efdf313fa659",
+    "poNumber": "PO-20250513-0006",
+    "supplierId": "6a04a0b20160efdf313fa64c",
+    "warehouseId": "6a04513d84e7fb8a7792958d",
+    "status": "approved",
+    "totalAmount": 149950000,
+    "expectedDeliveryDate": "2025-05-22T00:00:00.000Z",
+    "notes": "Nhập Galaxy Z Fold6",
+    "createdBy": "6a04a0b20160efdf313fa646",
+    "items": [
+      {
+        "productId": "6a04513d84e7fb8a779295a6",
+        "quantity": 3,
+        "unitPrice": 49990000,
+        "totalPrice": 149970000
+      }
+    ],
+    "createdAt": "2026-05-13T16:02:58.637Z",
+    "updatedAt": "2026-05-13T16:02:58.637Z"
+  },
+  {
+    "_id": "6a06bd1def9a202b750ae509",
+    "poNumber": "PO-20260515-0001",
+    "supplierId": "6a06bc4bef9a202b750ae4e8",
+    "warehouseId": "6a04513d84e7fb8a7792958b",
+    "items": [
+      {
+        "productId": "6a04513d84e7fb8a779295a2",
+        "quantity": 1,
+        "unitPrice": 39900000,
+        "totalPrice": 39900000,
+        "_id": "6a06bd1def9a202b750ae50a"
+      }
+    ],
+    "totalAmount": 39900000,
+    "status": "approved",
+    "notes": "",
+    "createdBy": "6a04a0b20160efdf313fa646",
+    "createdAt": "2026-05-15T06:28:45.754Z",
+    "updatedAt": "2026-05-15T06:31:20.887Z",
+    "__v": 0
+  }
+]

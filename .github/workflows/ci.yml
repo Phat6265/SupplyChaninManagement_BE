@@ -1,0 +1,50 @@
+name: CI — Lint, Type-check & Test
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [develop]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service:
+          - auth-service
+          - api-gateway
+          - product-service
+          - inventory-service
+          - order-service
+          - shipment-service
+          - notification-service
+          - analytics-service
+
+    name: ${{ matrix.service }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: services/${{ matrix.service }}/package-lock.json
+
+      - name: Install dependencies
+        working-directory: services/${{ matrix.service }}
+        run: npm ci
+
+      - name: TypeScript compile check
+        working-directory: services/${{ matrix.service }}
+        run: npx tsc --noEmit
+
+      - name: Run tests
+        working-directory: services/${{ matrix.service }}
+        run: npm test
+
+      - name: Docker build test
+        run: docker build -f services/${{ matrix.service }}/Dockerfile services/${{ matrix.service }} --tag sw-${{ matrix.service }}:ci-test
