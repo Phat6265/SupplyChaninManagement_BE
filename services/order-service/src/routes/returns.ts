@@ -1,10 +1,11 @@
 import { Router, Request, Response } from 'express';
 import { Return } from '../models/Return';
+import { staffUp, managerUp } from '../middleware/rbac';
 
 const router = Router();
 
-// GET all returns
-router.get('/', async (req: Request, res: Response) => {
+// ── READ: admin, manager, staff ───────────────────────────────────────────────
+router.get('/', staffUp, async (req: Request, res: Response) => {
   try {
     const { status, type, limit = 50, page = 1 } = req.query;
     const filter: any = {};
@@ -19,8 +20,7 @@ router.get('/', async (req: Request, res: Response) => {
   } catch (e: any) { res.status(500).json({ success: false, message: e.message }); }
 });
 
-// GET by id
-router.get('/:id', async (req: Request, res: Response) => {
+router.get('/:id', staffUp, async (req: Request, res: Response) => {
   try {
     const ret = await Return.findById(req.params.id);
     if (!ret) { res.status(404).json({ success: false, message: 'Not found' }); return; }
@@ -28,8 +28,8 @@ router.get('/:id', async (req: Request, res: Response) => {
   } catch (e: any) { res.status(500).json({ success: false, message: e.message }); }
 });
 
-// POST create return
-router.post('/', async (req: Request, res: Response) => {
+// ── CREATE: admin, manager, staff (staff tạo đơn trả từ khách) ───────────────
+router.post('/', staffUp, async (req: Request, res: Response) => {
   try {
     const createdBy = req.headers['x-user-email'] || req.headers['x-user-id'] || 'system';
     const ret = await Return.create({ ...req.body, createdBy });
@@ -37,8 +37,10 @@ router.post('/', async (req: Request, res: Response) => {
   } catch (e: any) { res.status(400).json({ success: false, message: e.message }); }
 });
 
-// PATCH update status
-router.patch('/:id/status', async (req: Request, res: Response) => {
+// ── UPDATE STATUS: chỉ admin và manager (duyệt/từ chối đơn trả) ──────────────
+// pending → approved/rejected: manager, admin
+// approved → completed: manager, admin
+router.patch('/:id/status', managerUp, async (req: Request, res: Response) => {
   try {
     const ret = await Return.findByIdAndUpdate(req.params.id, { status: req.body.status }, { new: true });
     if (!ret) { res.status(404).json({ success: false, message: 'Not found' }); return; }

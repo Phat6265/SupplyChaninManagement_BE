@@ -22,7 +22,14 @@ export const initSocketIO = (httpServer: HttpServer, corsOrigin: string[]): IOSe
   // ✅ Phase 4: Redis adapter for multi-instance Socket.IO
   const redisUrl = process.env.REDIS_URL || 'redis://localhost:6379';
   try {
-    const pubClient = new Redis(redisUrl);
+    const pubClient = new Redis(redisUrl, {
+      maxRetriesPerRequest: null,
+      retryStrategy: (times: number) => {
+        if (times > 5) return null; // Stop retrying after 5 attempts
+        return Math.min(times * 500, 3000);
+      },
+      lazyConnect: true,
+    });
     const subClient = pubClient.duplicate();
 
     pubClient.on('connect', () => console.log('[socket.io] Redis pub client connected'));
@@ -30,8 +37,16 @@ export const initSocketIO = (httpServer: HttpServer, corsOrigin: string[]): IOSe
     pubClient.on('error', (err) => console.error('[socket.io] Redis pub error:', err.message));
     subClient.on('error', (err) => console.error('[socket.io] Redis sub error:', err.message));
 
-    io.adapter(createAdapter(pubClient, subClient));
-    console.log('[socket.io] Redis adapter enabled — multi-instance ready');
+    Promise.all([pubClient.connect(), subClient.connect()])
+      .then(() => {
+        io!.adapter(createAdapter(pubClient, subClient));
+        console.log('[socket.io] Redis adapter enabled — multi-instance ready');
+      })
+      .catch((err) => {
+        console.warn('[socket.io] Redis adapter failed, running in single-instance mode:', err.message);
+        pubClient.disconnect();
+        subClient.disconnect();
+      });
   } catch (err: any) {
     console.warn('[socket.io] Redis adapter failed, running in single-instance mode:', err.message);
   }

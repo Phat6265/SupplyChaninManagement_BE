@@ -36,11 +36,44 @@ export class SalesOrderController {
   async updateStatus(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.headers['x-user-id'] as string;
+      const role = (req.headers['x-user-role'] as string) || '';
       const { status } = req.body;
+
       if (!Object.values(SalesOrderStatus).includes(status)) {
         err(res, `Invalid status: ${status}`);
         return;
       }
+
+      // ── Role-based status transition rules ────────────────────────────────
+      // Staff can only confirm (pending → confirmed)
+      // Manager/Admin can do all transitions including cancel
+      const staffAllowedTransitions: SalesOrderStatus[] = [
+        SalesOrderStatus.CONFIRMED,
+      ];
+      const managerAllowedTransitions: SalesOrderStatus[] = [
+        SalesOrderStatus.CONFIRMED,
+        SalesOrderStatus.PROCESSING,
+        SalesOrderStatus.SHIPPED,
+        SalesOrderStatus.DELIVERED,
+        SalesOrderStatus.CANCELLED,
+      ];
+
+      if (role === 'staff' && !staffAllowedTransitions.includes(status as SalesOrderStatus)) {
+        res.status(403).json({
+          success: false,
+          message: `Staff can only confirm orders. To set status '${status}', contact a manager.`,
+        });
+        return;
+      }
+
+      if (role === 'driver') {
+        res.status(403).json({
+          success: false,
+          message: 'Drivers cannot update sales order status.',
+        });
+        return;
+      }
+
       const order = await salesOrderService.updateStatus(req.params.id, status, userId);
       ok(res, order, 'Status updated');
     } catch (e: any) { err(res, e.message); }

@@ -36,11 +36,38 @@ export class PurchaseOrderController {
   async updateStatus(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.headers['x-user-id'] as string;
+      const role = (req.headers['x-user-role'] as string) || '';
       const { status } = req.body;
+
       if (!Object.values(PurchaseOrderStatus).includes(status)) {
         err(res, `Invalid status: ${status}`);
         return;
       }
+
+      // ── Role-based status transition rules ────────────────────────────────
+      // Staff: draft → pending, approved → received (nhận hàng)
+      // Manager/Admin: tất cả transitions bao gồm approve và cancel
+      const staffAllowedTransitions: PurchaseOrderStatus[] = [
+        PurchaseOrderStatus.PENDING,   // draft → pending (gửi duyệt)
+        PurchaseOrderStatus.RECEIVED,  // approved → received (nhận hàng)
+      ];
+
+      if (role === 'staff' && !staffAllowedTransitions.includes(status as PurchaseOrderStatus)) {
+        res.status(403).json({
+          success: false,
+          message: `Staff cannot set PO status to '${status}'. Approval and cancellation require manager role.`,
+        });
+        return;
+      }
+
+      if (role === 'driver') {
+        res.status(403).json({
+          success: false,
+          message: 'Drivers cannot update purchase order status.',
+        });
+        return;
+      }
+
       const order = await purchaseOrderService.updateStatus(req.params.id, status, userId);
       ok(res, order, 'Status updated');
     } catch (e: any) { err(res, e.message); }

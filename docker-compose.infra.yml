@@ -1,0 +1,25 @@
+version: '3.8'
+
+# Chỉ chạy Redis + RabbitMQ (infrastructure)
+# Dùng khi chạy backend services trực tiếp (không Docker)
+# Command: docker compose -f docker-compose.infra.yml up -d
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: sw-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    container_name: sw-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    restart: unless-stopped

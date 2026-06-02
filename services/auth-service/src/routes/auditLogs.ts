@@ -1,10 +1,17 @@
 import { Router, Request, Response } from 'express';
 import { AuditLog } from '../models/AuditLog';
+import { authMiddleware, roleMiddleware } from '../middlewares/auth';
+import { UserRole } from '../models/User';
 
 const router = Router();
 
-// GET all audit logs
-router.get('/', async (req: Request, res: Response) => {
+// Admin, Manager, Staff — Driver không xem audit log (USER_STORIES §2.2)
+const auditReaders = [
+  authMiddleware,
+  roleMiddleware([UserRole.ADMIN, UserRole.WAREHOUSE_MANAGER, UserRole.STAFF]),
+];
+
+router.get('/', ...auditReaders, async (req: Request, res: Response) => {
   try {
     const { userId, action, resource, limit = 50, page = 1 } = req.query;
     const filter: any = {};

@@ -141,10 +141,8 @@ app.use('/api/categories',      ...proxyWithAuth(config.productServiceUrl, '/api
 // Returns — part of order-service
 app.use('/api/returns',         ...proxyWithAuth(config.orderServiceUrl));
 
-// Audit Logs — part of auth-service
-app.use('/api/audit-logs', proxy(config.authServiceUrl, {
-  proxyReqPathResolver: (req) => req.baseUrl + req.url,
-}));
+// Audit Logs — auth-service (admin, manager, staff only)
+app.use('/api/audit-logs', ...proxyWithAuth(config.authServiceUrl));
 
 // Notifications — no cache (user-specific)
 app.use('/api/notifications',   ...proxyWithAuth(config.notificationServiceUrl));

@@ -1,9 +1,10 @@
 import { Router, Request, Response } from 'express';
 import { Category } from '../models/Category';
+import { staffUp, managerUp } from '../middleware/rbac';
 
 const router = Router();
 
-// GET all categories
+// ── READ: tất cả role ─────────────────────────────────────────────────────────
 router.get('/', async (_req: Request, res: Response) => {
   try {
     const categories = await Category.find().sort({ name: 1 });
@@ -11,7 +12,6 @@ router.get('/', async (_req: Request, res: Response) => {
   } catch (e: any) { res.status(500).json({ success: false, message: e.message }); }
 });
 
-// GET category by id
 router.get('/:id', async (req: Request, res: Response) => {
   try {
     const cat = await Category.findById(req.params.id);
@@ -20,16 +20,15 @@ router.get('/:id', async (req: Request, res: Response) => {
   } catch (e: any) { res.status(500).json({ success: false, message: e.message }); }
 });
 
-// POST create
-router.post('/', async (req: Request, res: Response) => {
+// ── WRITE: admin, manager, staff ──────────────────────────────────────────────
+router.post('/', staffUp, async (req: Request, res: Response) => {
   try {
     const cat = await Category.create(req.body);
     res.status(201).json({ success: true, data: cat });
   } catch (e: any) { res.status(400).json({ success: false, message: e.message }); }
 });
 
-// PUT update
-router.put('/:id', async (req: Request, res: Response) => {
+router.put('/:id', staffUp, async (req: Request, res: Response) => {
   try {
     const cat = await Category.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!cat) { res.status(404).json({ success: false, message: 'Not found' }); return; }
@@ -37,8 +36,8 @@ router.put('/:id', async (req: Request, res: Response) => {
   } catch (e: any) { res.status(400).json({ success: false, message: e.message }); }
 });
 
-// DELETE
-router.delete('/:id', async (req: Request, res: Response) => {
+// ── DELETE: chỉ admin và manager ─────────────────────────────────────────────
+router.delete('/:id', managerUp, async (req: Request, res: Response) => {
   try {
     await Category.findByIdAndDelete(req.params.id);
     res.json({ success: true, message: 'Deleted' });

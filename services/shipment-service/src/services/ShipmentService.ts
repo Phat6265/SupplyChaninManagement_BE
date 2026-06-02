@@ -34,8 +34,9 @@ export class ShipmentService {
     return s;
   }
 
-  async getAllShipments(skip: number = 0, limit: number = 20) {
-    return Shipment.find()
+  async getAllShipments(skip: number = 0, limit: number = 20, driverId?: string) {
+    const filter = driverId ? { driverId } : {};
+    return Shipment.find(filter)
       .populate('customerId')
       .populate('salesOrderId')
       .skip(skip)
@@ -43,8 +44,10 @@ export class ShipmentService {
       .sort({ createdAt: -1 });
   }
 
-  async getShipmentsByStatus(status: string, skip: number = 0, limit: number = 20) {
-    return Shipment.find({ status })
+  async getShipmentsByStatus(status: string, skip: number = 0, limit: number = 20, driverId?: string) {
+    const filter: Record<string, unknown> = { status };
+    if (driverId) filter.driverId = driverId;
+    return Shipment.find(filter)
       .populate('customerId')
       .populate('salesOrderId')
       .skip(skip)
