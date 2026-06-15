@@ -10,11 +10,18 @@ const router = Router();
 router.post('/import', staffUp, (req: Request, res: Response) => inventoryController.importStock(req, res));
 router.post('/export', staffUp, (req: Request, res: Response) => inventoryController.exportStock(req, res));
 
+<<<<<<< Updated upstream
 // ── ADJUST: chỉ admin và manager (điều chỉnh tồn kho cần quyền cao hơn) ───────
 router.post('/adjust', managerUp, (req: Request, res: Response) => inventoryController.adjustStock(req, res));
 
 // ── READ: admin, manager, staff (driver không cần xem logs kho) ───────────────
 router.get('/logs', staffUp, (req: Request, res: Response) => inventoryController.getInventoryLogs(req, res));
 router.get('/warehouse/:warehouseId', staffUp, (req: Request, res: Response) => inventoryController.getWarehouseInventory(req, res));
+=======
+// ✅ Fix: original backend uses /logs not /
+router.get('/logs', (req: Request, res: Response) => inventoryController.getInventoryLogs(req, res));
+router.get('/low-stock', (req: Request, res: Response) => inventoryController.getLowStockAlerts(req, res));
+router.get('/warehouse/:warehouseId', (req: Request, res: Response) => inventoryController.getWarehouseInventory(req, res));
+>>>>>>> Stashed changes
 
 export default router;

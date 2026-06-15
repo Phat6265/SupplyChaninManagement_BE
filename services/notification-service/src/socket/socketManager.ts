@@ -10,7 +10,7 @@ let io: IOServer | null = null;
  * When running multiple notification-service instances, all instances
  * share the same Socket.IO rooms via Redis pub/sub.
  */
-export const initSocketIO = (httpServer: HttpServer, corsOrigin: string[]): IOServer => {
+export const initSocketIO = async (httpServer: HttpServer, corsOrigin: string[]): Promise<IOServer> => {
   io = new IOServer(httpServer, {
     cors: { origin: corsOrigin, methods: ['GET', 'POST'] },
     // Performance optimizations
@@ -21,6 +21,7 @@ export const initSocketIO = (httpServer: HttpServer, corsOrigin: string[]): IOSe
 
   // ✅ Phase 4: Redis adapter for multi-instance Socket.IO
   const redisUrl = process.env.REDIS_URL || 'redis://localhost:6379';
+<<<<<<< Updated upstream
   try {
     const pubClient = new Redis(redisUrl, {
       maxRetriesPerRequest: null,
@@ -31,12 +32,26 @@ export const initSocketIO = (httpServer: HttpServer, corsOrigin: string[]): IOSe
       lazyConnect: true,
     });
     const subClient = pubClient.duplicate();
+=======
+  if (process.env.REDIS_URL) {
+    try {
+      const pubClient = new Redis(redisUrl, {
+        maxRetriesPerRequest: null,
+        retryStrategy: (times: number) => {
+          if (times > 5) return null;
+          return Math.min(times * 500, 3000);
+        },
+        lazyConnect: true,
+      });
+      const subClient = pubClient.duplicate();
+>>>>>>> Stashed changes
 
-    pubClient.on('connect', () => console.log('[socket.io] Redis pub client connected'));
-    subClient.on('connect', () => console.log('[socket.io] Redis sub client connected'));
-    pubClient.on('error', (err) => console.error('[socket.io] Redis pub error:', err.message));
-    subClient.on('error', (err) => console.error('[socket.io] Redis sub error:', err.message));
+      pubClient.on('connect', () => console.log('[socket.io] Redis pub client connected'));
+      subClient.on('connect', () => console.log('[socket.io] Redis sub client connected'));
+      pubClient.on('error', (err) => console.error('[socket.io] Redis pub error:', err.message));
+      subClient.on('error', (err) => console.error('[socket.io] Redis sub error:', err.message));
 
+<<<<<<< Updated upstream
     Promise.all([pubClient.connect(), subClient.connect()])
       .then(() => {
         io!.adapter(createAdapter(pubClient, subClient));
@@ -49,6 +64,18 @@ export const initSocketIO = (httpServer: HttpServer, corsOrigin: string[]): IOSe
       });
   } catch (err: any) {
     console.warn('[socket.io] Redis adapter failed, running in single-instance mode:', err.message);
+=======
+      await pubClient.connect();
+      await subClient.connect();
+
+      io.adapter(createAdapter(pubClient, subClient));
+      console.log('[socket.io] Redis adapter enabled — multi-instance ready');
+    } catch (err: any) {
+      console.warn('[socket.io] Redis adapter failed, running in single-instance mode:', err.message);
+    }
+  } else {
+    console.log('[socket.io] No REDIS_URL set, running in single-instance mode');
+>>>>>>> Stashed changes
   }
 
   io.on('connection', (socket) => {

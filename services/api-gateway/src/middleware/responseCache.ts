@@ -4,12 +4,16 @@ import Redis from 'ioredis';
 let redis: Redis | null = null;
 
 export const initGatewayCache = (): void => {
-  const url = process.env.REDIS_URL || 'redis://localhost:6379';
+  const url = process.env.REDIS_URL;
+  if (!url) {
+    console.log('[gateway-cache] No REDIS_URL set, gateway cache disabled');
+    return;
+  }
   redis = new Redis(url, {
-    maxRetriesPerRequest: 3,
+    maxRetriesPerRequest: null,
     retryStrategy: (times: number) => {
-      if (times > 10) return null;
-      return Math.min(times * 200, 2000);
+      if (times > 5) return null;
+      return Math.min(times * 500, 3000);
     },
     lazyConnect: true,
     keyPrefix: 'gw:',

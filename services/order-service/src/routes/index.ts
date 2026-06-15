@@ -43,6 +43,14 @@ purchaseOrderRouter.put('/:id/status', staffUp, (req: Request, res: Response) =>
 
 // ── Customers ─────────────────────────────────────────────────────────────────
 export const customerRouter = Router();
+<<<<<<< Updated upstream
+=======
+customerRouter.get('/', (req: Request, res: Response) => customerController.getAllCustomers(req, res));
+customerRouter.get('/:id', (req: Request, res: Response) => customerController.getCustomerById(req, res));
+customerRouter.post('/', (req: Request, res: Response) => customerController.createCustomer(req, res));
+customerRouter.put('/:id', (req: Request, res: Response) => customerController.updateCustomer(req, res));
+customerRouter.patch('/:id/archive', (req: Request, res: Response) => customerController.archiveCustomer(req, res));
+>>>>>>> Stashed changes
 
 // READ: admin, manager, staff
 customerRouter.get('/', staffUp, (req: Request, res: Response) => customerController.getAllCustomers(req, res));
@@ -54,6 +62,16 @@ customerRouter.put('/:id', staffUp, (req: Request, res: Response) => customerCon
 
 // ── Suppliers ─────────────────────────────────────────────────────────────────
 export const supplierRouter = Router();
+<<<<<<< Updated upstream
+=======
+supplierRouter.get('/', (req: Request, res: Response) => supplierController.getAllSuppliers(req, res));
+supplierRouter.get('/:id', (req: Request, res: Response) => supplierController.getSupplierById(req, res));
+supplierRouter.post('/', (req: Request, res: Response) => supplierController.createSupplier(req, res));
+supplierRouter.put('/:id', (req: Request, res: Response) => supplierController.updateSupplier(req, res));
+supplierRouter.patch('/:id/archive', (req: Request, res: Response) => supplierController.archiveSupplier(req, res));
+supplierRouter.patch('/:id/rating', (req: Request, res: Response) => supplierController.updateRating(req, res));
+supplierRouter.get('/:id/rating', (req: Request, res: Response) => supplierController.getRating(req, res));
+>>>>>>> Stashed changes
 
 // READ: admin, manager, staff
 supplierRouter.get('/', staffUp, (req: Request, res: Response) => supplierController.getAllSuppliers(req, res));

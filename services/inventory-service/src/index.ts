@@ -9,6 +9,8 @@ import { registerInventoryConsumers } from './consumers/orderConsumer';
 import { deepHealthHandler } from './utils/healthCheck';
 import inventoryRoutes from './routes/inventory';
 import warehouseRoutes from './routes/warehouses';
+import stockTransferRoutes from './routes/stockTransfers';
+import inventoryCountRoutes from './routes/inventoryCount';
 
 const app = express();
 app.use(helmet());
@@ -18,6 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/inventory', inventoryRoutes);
 app.use('/api/warehouses', warehouseRoutes);
+app.use('/api/stock-transfers', stockTransferRoutes);
+app.use('/api/inventory-counts', inventoryCountRoutes);
 
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok', service: 'inventory-service', timestamp: new Date().toISOString() });

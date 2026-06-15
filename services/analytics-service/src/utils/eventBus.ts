@@ -10,8 +10,12 @@ let channel: amqp.Channel | null = null;
  * Connect to RabbitMQ and create a topic exchange.
  * Call once at service startup.
  */
-export const initEventBus = async (url?: string): Promise<amqp.Channel> => {
-  const rmqUrl = url || process.env.RABBITMQ_URL || 'amqp://admin:admin@localhost:5672';
+export const initEventBus = async (url?: string): Promise<amqp.Channel | null> => {
+  const rmqUrl = url || process.env.RABBITMQ_URL;
+  if (!rmqUrl) {
+    console.log('[eventBus] No RABBITMQ_URL set, event bus disabled');
+    return null;
+  }
 
   const connectWithRetry = async (retries = 10, delay = 3000): Promise<void> => {
     for (let i = 0; i < retries; i++) {

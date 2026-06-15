@@ -37,6 +37,11 @@ export class CustomerController {
     try { ok(res, await customerService.updateCustomer(req.params.id, req.body), 'Customer updated successfully'); }
     catch (e: any) { err(res, e.message); }
   }
+
+  async archiveCustomer(req: Request, res: Response): Promise<void> {
+    try { ok(res, await customerService.updateCustomer(req.params.id, { isActive: false }), 'Customer archived successfully'); }
+    catch (e: any) { err(res, e.message); }
+  }
 }
 
 export class SupplierController {
@@ -68,6 +73,26 @@ export class SupplierController {
   async updateSupplier(req: Request, res: Response): Promise<void> {
     try { ok(res, await supplierService.updateSupplier(req.params.id, req.body), 'Supplier updated successfully'); }
     catch (e: any) { err(res, e.message); }
+  }
+
+  async archiveSupplier(req: Request, res: Response): Promise<void> {
+    try { ok(res, await supplierService.updateSupplier(req.params.id, { isActive: false }), 'Supplier archived successfully'); }
+    catch (e: any) { err(res, e.message); }
+  }
+
+  async updateRating(req: Request, res: Response): Promise<void> {
+    try {
+      const { rating } = req.body;
+      if (!rating || rating < 1 || rating > 5) { err(res, 'Rating must be between 1 and 5'); return; }
+      ok(res, await supplierService.updateSupplier(req.params.id, { rating }), 'Rating updated');
+    } catch (e: any) { err(res, e.message); }
+  }
+
+  async getRating(req: Request, res: Response): Promise<void> {
+    try {
+      const supplier = await supplierService.getSupplierById(req.params.id);
+      ok(res, { rating: (supplier as any).rating || 0 }, 'Rating retrieved');
+    } catch (e: any) { err(res, e.message, 404); }
   }
 }
 

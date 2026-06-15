@@ -103,6 +103,14 @@ export class InventoryController {
       ok(res, w, 'Warehouse deleted');
     } catch (e: any) { err(res, e.message, 404); }
   }
+
+  async getLowStockAlerts(req: Request, res: Response): Promise<void> {
+    try {
+      const threshold = parseInt(req.query.threshold as string) || 10;
+      const alerts = await inventoryService.getLowStockAlerts(threshold);
+      ok(res, alerts, 'Low stock alerts retrieved');
+    } catch (e: any) { err(res, e.message); }
+  }
 }
 
 export const inventoryController = new InventoryController();

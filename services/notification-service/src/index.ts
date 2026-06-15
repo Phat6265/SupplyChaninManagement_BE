@@ -19,10 +19,6 @@ app.use(cors({ origin: config.corsOrigin }));
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Initialize Socket.IO
-initSocketIO(server, config.corsOrigin);
-console.log('✅ [notification-service] Socket.IO initialized');
-
 app.use('/api/notifications', notificationRoutes);
 
 app.get('/health', (_req, res) => {
@@ -35,6 +31,8 @@ app.use((_req, res) => res.status(404).json({ success: false, message: 'Not foun
 const startServer = async () => {
   try {
     await connectDatabase();
+    await initSocketIO(server, config.corsOrigin);
+    console.log('✅ [notification-service] Socket.IO initialized');
     initRedis();
     await initEventBus();
     await registerNotificationConsumers();

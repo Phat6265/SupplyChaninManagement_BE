@@ -31,6 +31,8 @@ const registerValidator = [
 // ── Public ─────────────────────────────────────────────────────────────────
 router.post('/login', loginValidator, validate, (req: Request, res: Response) => authController.login(req, res));
 router.post('/refresh-token', (req: Request, res: Response) => authController.refreshToken(req, res));
+router.post('/forgot-password', (req: Request, res: Response) => authController.forgotPassword(req, res));
+router.post('/reset-password', (req: Request, res: Response) => authController.resetPassword(req, res));
 
 /** Expose RSA public key so api-gateway can fetch it at startup */
 router.get('/public-key', (req: Request, res: Response) => authController.getPublicKeyEndpoint(req, res));
@@ -62,7 +64,13 @@ router.get('/profile', authMiddleware, (req: Request, res: Response) =>
 router.put('/profile', authMiddleware, (req: Request, res: Response) =>
   authController.updateProfile(req as any, res)
 );
+router.patch('/profile', authMiddleware, (req: Request, res: Response) =>
+  authController.updateProfile(req as any, res)
+);
 router.put('/change-password', authMiddleware, (req: Request, res: Response) =>
+  authController.changePassword(req as any, res)
+);
+router.patch('/change-password', authMiddleware, (req: Request, res: Response) =>
   authController.changePassword(req as any, res)
 );
 
