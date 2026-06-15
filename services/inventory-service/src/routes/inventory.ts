@@ -12,6 +12,7 @@ router.post('/adjust', (req: Request, res: Response) => inventoryController.adju
 
 // ✅ Fix: original backend uses /logs not /
 router.get('/logs', (req: Request, res: Response) => inventoryController.getInventoryLogs(req, res));
+router.get('/low-stock', (req: Request, res: Response) => inventoryController.getLowStockAlerts(req, res));
 router.get('/warehouse/:warehouseId', (req: Request, res: Response) => inventoryController.getWarehouseInventory(req, res));
 
 export default router;

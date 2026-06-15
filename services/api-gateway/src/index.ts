@@ -50,6 +50,24 @@ app.get('/health/deep', deepHealthCheck);
 // ── Auth routes (no token required — login, register, public-key) ────────────
 app.use('/api/auth', proxy(config.authServiceUrl, {
   proxyReqPathResolver: (req) => req.baseUrl + req.url,
+  proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
+    const r = srcReq as express.Request & { headers: Record<string, any> };
+    if (r.headers.authorization) {
+      (proxyReqOpts as any).headers = {
+        ...(proxyReqOpts as any).headers,
+        authorization: r.headers.authorization,
+      };
+    }
+    return proxyReqOpts;
+  },
+  proxyReqBodyDecorator: (bodyContent, srcReq) => {
+    // Re-stringify the already-parsed JSON body
+    if ((srcReq as any).body && typeof (srcReq as any).body === 'object') {
+      return JSON.stringify((srcReq as any).body);
+    }
+    return bodyContent;
+  },
+  timeout: 15000,
 }));
 
 // ── Proxy Helper with Auth + Cache Invalidation ──────────────────────────────
@@ -126,6 +144,12 @@ app.use('/api/inventory',
 
 app.use('/api/warehouses',      ...proxyWithAuth(config.inventoryServiceUrl, '/api/warehouses'));
 
+// Stock Transfers
+app.use('/api/stock-transfers', ...proxyWithAuth(config.inventoryServiceUrl));
+
+// Inventory Counts (Stocktaking)
+app.use('/api/inventory-counts', ...proxyWithAuth(config.inventoryServiceUrl));
+
 // Orders — no gateway cache (frequently changing)
 app.use('/api/customers',       ...proxyWithAuth(config.orderServiceUrl));
 app.use('/api/suppliers',       ...proxyWithAuth(config.orderServiceUrl));
@@ -140,6 +164,9 @@ app.use('/api/categories',      ...proxyWithAuth(config.productServiceUrl, '/api
 
 // Returns — part of order-service
 app.use('/api/returns',         ...proxyWithAuth(config.orderServiceUrl));
+
+// Purchase Requisitions — part of order-service
+app.use('/api/requisitions',    ...proxyWithAuth(config.orderServiceUrl));
 
 // Audit Logs — part of auth-service
 app.use('/api/audit-logs', proxy(config.authServiceUrl, {

@@ -181,10 +181,6 @@ export class AnalyticsController {
     } catch (e: any) { err(res, e.message); }
   }
 
-  /**
-   * ✅ getMonthlyStats — matches original backend AnalyticsController.getMonthlyStats
-   * (was missing entirely in new service)
-   */
   async getMonthlyStats(_req: Request, res: Response): Promise<void> {
     try {
       const response = await shipmentClient.get('/api/shipments?limit=1000');
@@ -207,6 +203,52 @@ export class AnalyticsController {
       });
 
       ok(res, monthlyStats);
+    } catch (e: any) { err(res, e.message); }
+  }
+  /**
+   * Inventory Valuation Report — stock × unit price per product per warehouse
+   */
+  async getInventoryValuation(_req: Request, res: Response): Promise<void> {
+    try {
+      const [productsRes, logsRes] = await Promise.allSettled([
+        productClient.get('/api/products?limit=500'),
+        inventoryClient.get('/api/inventory/logs?limit=5000'),
+      ]);
+
+      const products: any[] = productsRes.status === 'fulfilled'
+        ? (productsRes.value?.data?.data?.data || []) : [];
+      const logs: any[] = logsRes.status === 'fulfilled'
+        ? (logsRes.value?.data?.data?.data || []) : [];
+
+      // Build product price map
+      const priceMap: Record<string, number> = {};
+      products.forEach((p: any) => { priceMap[p._id] = p.price || 0; });
+
+      // Calculate stock per product
+      const stockMap: Record<string, number> = {};
+      logs.forEach((log: any) => {
+        if (!stockMap[log.productId]) stockMap[log.productId] = 0;
+        if (log.actionType === 'import') stockMap[log.productId] += log.quantity;
+        else if (log.actionType === 'export') stockMap[log.productId] -= log.quantity;
+      });
+
+      // Build valuation
+      const valuation = Object.entries(stockMap).map(([productId, stock]) => {
+        const product = products.find((p: any) => p._id === productId);
+        const unitPrice = priceMap[productId] || 0;
+        return {
+          productId,
+          productName: product?.name || productId,
+          sku: product?.sku || '—',
+          currentStock: Math.max(0, stock),
+          unitPrice,
+          totalValue: Math.max(0, stock) * unitPrice,
+        };
+      }).filter((v) => v.currentStock > 0).sort((a, b) => b.totalValue - a.totalValue);
+
+      const totalValue = valuation.reduce((sum, v) => sum + v.totalValue, 0);
+
+      ok(res, { valuation, totalValue, productCount: valuation.length });
     } catch (e: any) { err(res, e.message); }
   }
 }

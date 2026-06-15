@@ -159,6 +159,34 @@ export class InventoryService {
       { new: true }
     );
   }
+
+  /**
+   * Get products with stock below threshold across all warehouses.
+   * Aggregates inventory logs to calculate current stock per product.
+   */
+  async getLowStockAlerts(threshold: number = 10) {
+    const pipeline = [
+      {
+        $group: {
+          _id: { productId: '$productId', warehouseId: '$warehouseId' },
+          totalImport: { $sum: { $cond: [{ $eq: ['$actionType', 'import'] }, '$quantity', 0] } },
+          totalExport: { $sum: { $cond: [{ $eq: ['$actionType', 'export'] }, '$quantity', 0] } },
+        },
+      },
+      {
+        $project: {
+          productId: '$_id.productId',
+          warehouseId: '$_id.warehouseId',
+          currentStock: { $subtract: ['$totalImport', '$totalExport'] },
+          _id: 0,
+        },
+      },
+      { $match: { currentStock: { $lte: threshold, $gte: 0 } } },
+      { $sort: { currentStock: 1 as 1 } },
+      { $limit: 50 },
+    ];
+    return InventoryLog.aggregate(pipeline);
+  }
 }
 
 export const inventoryService = new InventoryService();

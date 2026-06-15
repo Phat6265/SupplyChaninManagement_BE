@@ -71,6 +71,10 @@ export class NotificationService {
   }
 
   async countAll() { return Notification.countDocuments(); }
+
+  async deleteNotification(notificationId: string) {
+    return Notification.findByIdAndDelete(notificationId);
+  }
 }
 
 export const notificationService = new NotificationService();

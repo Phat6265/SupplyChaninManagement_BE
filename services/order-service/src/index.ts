@@ -13,6 +13,7 @@ import {
   supplierRouter,
 } from './routes/index';
 import returnRouter from './routes/returns';
+import requisitionRouter from './routes/requisitions';
 
 const app = express();
 app.use(helmet());
@@ -25,6 +26,7 @@ app.use('/api/purchase-orders', purchaseOrderRouter);
 app.use('/api/customers', customerRouter);
 app.use('/api/suppliers', supplierRouter);
 app.use('/api/returns', returnRouter);
+app.use('/api/requisitions', requisitionRouter);
 
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok', service: 'order-service', timestamp: new Date().toISOString() });

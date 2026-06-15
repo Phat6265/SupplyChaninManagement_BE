@@ -11,5 +11,6 @@ router.get('/products/top-moving', (req: Request, res: Response) => analyticsCon
 
 // ✅ Added missing endpoint — matches original backend
 router.get('/monthly-stats', (req: Request, res: Response) => analyticsController.getMonthlyStats(req, res));
+router.get('/inventory-valuation', (req: Request, res: Response) => analyticsController.getInventoryValuation(req, res));
 
 export default router;

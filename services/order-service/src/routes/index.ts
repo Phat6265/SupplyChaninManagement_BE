@@ -25,6 +25,7 @@ customerRouter.get('/', (req: Request, res: Response) => customerController.getA
 customerRouter.get('/:id', (req: Request, res: Response) => customerController.getCustomerById(req, res));
 customerRouter.post('/', (req: Request, res: Response) => customerController.createCustomer(req, res));
 customerRouter.put('/:id', (req: Request, res: Response) => customerController.updateCustomer(req, res));
+customerRouter.patch('/:id/archive', (req: Request, res: Response) => customerController.archiveCustomer(req, res));
 
 // Suppliers
 export const supplierRouter = Router();
@@ -32,4 +33,7 @@ supplierRouter.get('/', (req: Request, res: Response) => supplierController.getA
 supplierRouter.get('/:id', (req: Request, res: Response) => supplierController.getSupplierById(req, res));
 supplierRouter.post('/', (req: Request, res: Response) => supplierController.createSupplier(req, res));
 supplierRouter.put('/:id', (req: Request, res: Response) => supplierController.updateSupplier(req, res));
+supplierRouter.patch('/:id/archive', (req: Request, res: Response) => supplierController.archiveSupplier(req, res));
+supplierRouter.patch('/:id/rating', (req: Request, res: Response) => supplierController.updateRating(req, res));
+supplierRouter.get('/:id/rating', (req: Request, res: Response) => supplierController.getRating(req, res));
 

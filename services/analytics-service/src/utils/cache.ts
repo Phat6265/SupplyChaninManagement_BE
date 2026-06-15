@@ -2,14 +2,18 @@ import Redis from 'ioredis';
 
 let redisClient: Redis | null = null;
 
-export const initRedis = (url?: string): Redis => {
+export const initRedis = (url?: string): Redis | null => {
   if (redisClient) return redisClient;
-  const redisUrl = url || process.env.REDIS_URL || 'redis://localhost:6379';
+  const redisUrl = url || process.env.REDIS_URL;
+  if (!redisUrl) {
+    console.log('[cache] No REDIS_URL set, cache disabled');
+    return null;
+  }
   redisClient = new Redis(redisUrl, {
-    maxRetriesPerRequest: 3,
+    maxRetriesPerRequest: null,
     retryStrategy: (times: number) => {
-      if (times > 10) return null;
-      return Math.min(times * 200, 2000);
+      if (times > 5) return null;
+      return Math.min(times * 500, 3000);
     },
     lazyConnect: true,
   });
